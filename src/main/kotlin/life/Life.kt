@@ -1,4 +1,4 @@
-package visualization
+package life
 
 import life.GameState
 import life.evaluateNextState
