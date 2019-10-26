@@ -34,7 +34,7 @@ To stop application press `Enter`.
 usage: [-h] [-c COLUMNS] [-r ROWS] [-s SEED] [-d DENSITY] [-u]
 
 optional arguments:
-  -h, --help          show this help message and exit
+  -h, --help          Show this help message and exit
 
   -c COLUMNS,         Number of columns in the game field. Must be a positive
   --columns COLUMNS   integer.
