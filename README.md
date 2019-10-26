@@ -32,7 +32,7 @@ To run the application JRE 1.8 or newer is required.
 
 ```
 optional arguments:
-  -h, --help          show this help message and exit
+  -h, --help          Show this help message and exit
 
   -c COLUMNS,         Height of the game field. Must be a positive integer.
   --columns COLUMNS
