@@ -89,11 +89,11 @@ private fun getNeighbors(x: Int, y: Int, width: Int, height: Int, unbounded: Boo
                 else -> coord
             }
         }
-        xRange = xRange.map { connect(it, width) }
-        yRange = yRange.map { connect(it, height) }
+        xRange = xRange.map { connect(it, height) }
+        yRange = yRange.map { connect(it, width) }
     } else {
-        xRange = xRange.filter { it in 0 until width }
-        yRange = yRange.filter { it in 0 until height }
+        xRange = xRange.filter { it in 0 until height }
+        yRange = yRange.filter { it in 0 until width }
     }
 
     return xRange.flatMap { i ->

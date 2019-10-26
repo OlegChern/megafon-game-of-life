@@ -1,37 +1,55 @@
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 import visualization.ConsoleExecutor
 
 import com.xenomachina.argparser.ArgParser
+import com.xenomachina.argparser.InvalidArgumentException
 import com.xenomachina.argparser.default
 import com.xenomachina.argparser.mainBody
 
 import life.Life
 
 fun main(args: Array<String>) = mainBody {
-    val parsedArgs = ArgParser(args).parseInto(::ApplicationArgs)
+    try {
+        val parsedArgs = ArgParser(args).parseInto(::ApplicationArgs)
 
-    val life = Life(parsedArgs.width, parsedArgs.height, parsedArgs.seed, parsedArgs.density, parsedArgs.unbounded)
-    val exec = ConsoleExecutor()
+        val life = Life(parsedArgs.rows, parsedArgs.columns, parsedArgs.seed, parsedArgs.density, parsedArgs.unbounded)
+        val exec = ConsoleExecutor()
 
-    val worker = exec.runLife(life)
+        val worker = exec.runLife(life)
 
-    readLine()
-
-    worker.cancel()
+        readLine()
+        worker.cancel()
+    } catch (e: NumberFormatException) {
+        print("ERROR OCCURRED DURING ARG PARSING! " + e.message)
+    }
 }
 
 private class ApplicationArgs(parser: ArgParser) {
 
-    val height by parser.storing(
-        "-r", "--rows",
-        help = "Height of the game field. Must be a positive integer."
-    ) { toInt() }.default(25)
-
-    val width by parser.storing(
+    val columns by parser.storing(
         "-c", "--columns",
+        help = "Height of the game field. Must be a positive integer."
+    ) { toInt() }
+        .default(25)
+        .addValidator {
+            if (value <= 0) {
+                throw InvalidArgumentException(
+                    "Width must be a positive integer"
+                )
+            }
+        }
+
+    val rows by parser.storing(
+        "-r", "--rows",
         help = "Width of the game field. Must be a positive integer."
-    ) { toInt() }.default(25)
+    ) { toInt() }
+        .default(25)
+        .addValidator {
+            if (value <= 0) {
+                throw InvalidArgumentException(
+                    "Height must be a positive integer"
+                )
+            }
+        }
 
     val seed by parser.storing(
         "-s", "--seed",

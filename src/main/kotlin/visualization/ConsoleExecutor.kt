@@ -13,7 +13,7 @@ const val DELAY_TIME: Long = 100
 
 class ConsoleExecutor : LifeExecutor {
 
-    private fun visualizeState(state: GameState): String {
+    fun visualizeState(state: GameState): String {
         val separator = "+" + "-".repeat(state.width * 2 - 1) + "+\n"
         val mapFunc = { cell: Boolean -> if (cell) "*" else " " }
         val view = StringBuilder("")

@@ -22,6 +22,13 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.fusesource.jansi', name: 'jansi', version: '1.8'
     compile "com.xenomachina:kotlin-argparser:2.0.7"
+    
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'org.junit.platform:junit-platform-engine:1.1.0'
+    testCompile 'org.junit.platform:junit-platform-suite-api:1.1.0'
+    testCompile 'org.junit.platform:junit-platform-launcher:1.1.0'
+    testCompile 'io.kotlintest:kotlintest-runner-junit5:3.0.0'
 }
 
 jar {
