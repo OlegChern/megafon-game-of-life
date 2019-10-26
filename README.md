@@ -2,7 +2,7 @@
 
 # Megafon Game Of Life
 
-This repository contains a cross-platform implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) created specially for Megafon 5G Dream Lab's competition. 
+This repository contains a cross-platform implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) created specially for [Megafon 5G Dream Lab's](http://5gdreamlab.spbu.ru/) competition. 
 
 ## Prerequisites
 
