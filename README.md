@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/xenomachina/kotlin-argparser-example.svg?branch=master)](https://travis-ci.com/OlegChern/Megafon-Game-Of-Life)
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 
 # Megafon Game Of Life
 
