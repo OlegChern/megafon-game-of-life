@@ -26,6 +26,7 @@ To run the application JRE 1.8 or newer is required.
 |                   |
 +-------------------+
 ```
+To stop application press `Enter`.
 
 `GameOfLife` accepts some optional parameters you may want to play around with:
 
