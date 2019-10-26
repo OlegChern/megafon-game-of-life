@@ -5,15 +5,17 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import life.Life
+import org.fusesource.jansi.AnsiConsole
 import java.lang.StringBuilder
 
-const val DELAY_TIME: Long = 3000
+const val DELAY_TIME: Long = 100
 
 class ConsoleExecutor : LifeExecutor {
 
     private fun visualizeState(state: GameState): String {
-        val separator = "=".repeat(state.width * 2 - 1) + "\n"
-        val mapFunc = { cell: Boolean -> if (cell) "0" else "~" }
+        val separator = "+" + "-".repeat(state.width * 2 - 1) + "+\n"
+        val mapFunc = { cell: Boolean -> if (cell) "*" else " " }
         val view = StringBuilder("")
 
         view.append(separator)
@@ -21,8 +23,10 @@ class ConsoleExecutor : LifeExecutor {
             view.append(
                 row.joinToString(
                     separator = " ",
-                    postfix = "\n",
-                    transform = mapFunc)
+                    prefix = "|",
+                    postfix = "|\n",
+                    transform = mapFunc
+                )
             )
         }
         view.append(separator)
@@ -33,25 +37,19 @@ class ConsoleExecutor : LifeExecutor {
     override fun runLife(life: Life): Job {
         return GlobalScope.launch {
             val states = life.iterator()
+            var current = states.next()
 
-            var iteration = 1
+            val eraser = "\u001b[H\u001b[2J"
+            AnsiConsole.systemInstall()
+
             while (true) {
-                val current = states.next()
+                AnsiConsole.out.print(eraser)
 
-                printHeader(current.width, iteration)
                 print(visualizeState(current))
+                current = states.next()
 
-                iteration++
                 delay(DELAY_TIME)
             }
         }
-    }
-
-    private fun printHeader(width: Int, iteration: Int) {
-        val headerTemplate = "%d ITERATION\n"
-        val startingPosition = (width * 2 - headerTemplate.length) / 2
-
-        print(" ".repeat(startingPosition))
-        print(headerTemplate.format(iteration))
     }
 }

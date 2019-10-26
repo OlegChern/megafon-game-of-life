@@ -11,7 +11,7 @@ repositories {
 }
 
 shadowJar {
-    baseName = 'shadow'
+    baseName = 'GameOfLife'
     classifier = null
     version = null
 }
@@ -20,13 +20,15 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.fusesource.jansi', name: 'jansi', version: '1.8'
+    compile "com.xenomachina:kotlin-argparser:2.0.7"
 }
 
 jar {
     manifest {
         attributes(
                 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'TestKt'
+                'Main-Class': 'ApplicationKt'
         )
     }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }

@@ -36,19 +36,19 @@ class GameState(val state: Array<Array<Boolean>>, val unbounded: Boolean = false
 private val neighborsToStayAlive = 2..3
 private val neighborsToBeBorn = 3..3
 
-fun generateStateFromSeed(seed: Int, density: Float, width: Int, height: Int, unbounded: Boolean): GameState {
+fun generateStateFromSeed(seed: Int, density: Float, height: Int, width: Int, unbounded: Boolean): GameState {
     val densityChecked = if (density in -1f..1f) Math.abs(density) else Math.abs(density / Float.MAX_VALUE)
 
-    val cellNumber = Math.round(width * height * densityChecked)
+    val cellNumber = Math.round(height * width * densityChecked)
     val random = Random(seed)
 
-    val initState = Array(width) {
-        Array(height) { false }
+    val initState = Array(height) {
+        Array(width) { false }
     }
 
     for (i in 1..cellNumber) {
-        val x = Math.abs(random.nextInt() % width)
-        val y = Math.abs(random.nextInt() % height)
+        val x = Math.abs(random.nextInt() % height)
+        val y = Math.abs(random.nextInt() % width)
 
         initState[x][y] = true
     }
@@ -68,7 +68,7 @@ fun evaluateNextState(state: GameState): GameState {
 data class Point(val x: Int, val y: Int)
 
 private fun assesNeighbors(x: Int, y: Int, state: GameState): Boolean {
-    val counter = getNeighbors(x, y, state.height, state.width, state.unbounded).count { p -> state.state[p.x][p.y] }
+    val counter = getNeighbors(x, y, state.width, state.height, state.unbounded).count { p -> state.state[p.x][p.y] }
 
     return when {
         state.state[x][y] && counter in neighborsToStayAlive -> true

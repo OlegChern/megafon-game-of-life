@@ -1,9 +1,5 @@
 package life
 
-import life.GameState
-import life.evaluateNextState
-import life.generateStateFromSeed
-
 class Life(state: GameState) : Sequence<GameState> {
 
     private val stateSequence = generateSequence<GameState>(
