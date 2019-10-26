@@ -27,7 +27,7 @@ private class ApplicationArgs(parser: ArgParser) {
 
     val columns by parser.storing(
         "-c", "--columns",
-        help = "Height of the game field. Must be a positive integer."
+        help = "Number of columns in the game field. Must be a positive integer."
     ) { toInt() }
         .default(25)
         .addValidator {
@@ -40,7 +40,7 @@ private class ApplicationArgs(parser: ArgParser) {
 
     val rows by parser.storing(
         "-r", "--rows",
-        help = "Width of the game field. Must be a positive integer."
+        help = "Number of rows in the game field. Must be a positive integer."
     ) { toInt() }
         .default(25)
         .addValidator {
