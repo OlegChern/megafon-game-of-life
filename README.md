@@ -30,14 +30,16 @@ To run the application JRE 1.8 or newer is required.
 `GameOfLife` accepts some optional parameters you may want to play around with:
 
 ```
+usage: [-h] [-c COLUMNS] [-r ROWS] [-s SEED] [-d DENSITY] [-u]
+
 optional arguments:
-  -h, --help          Show this help message and exit
+  -h, --help          show this help message and exit
 
-  -c COLUMNS,         Height of the game field. Must be a positive integer.
-  --columns COLUMNS
+  -c COLUMNS,         Number of columns in the game field. Must be a positive
+  --columns COLUMNS   integer.
 
-  -r ROWS,            Width of the game field. Must be a positive integer.
-  --rows ROWS
+  -r ROWS,            Number of rows in the game field. Must be a positive
+  --rows ROWS         integer.
 
   -s SEED,            Seed to generate an initial game state from. Must be an
   --seed SEED         integer
@@ -48,7 +50,3 @@ optional arguments:
 
   -u, --unbounded     Determines if the game field is enclosed or not.
 ```
-
-
-
-
