@@ -1,7 +1,7 @@
 language: java
 install: true
 
-dist: trusty
+dist: Xenial
 jdk: oraclejdk8
 
 script:
