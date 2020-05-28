@@ -31,7 +31,7 @@ To stop application press `Enter`.
 `GameOfLife` accepts some optional parameters you may want to play around with:
 
 ```
-usage: [-h] [-c COLUMNS] [-r ROWS] [-s SEED] [-d DENSITY] [-u]
+usage: java -jar application/GameOfLife.jar [-h] [-c COLUMNS] [-r ROWS] [-s SEED] [-d DENSITY] [-u]
 
 optional arguments:
   -h, --help          Show this help message and exit.
